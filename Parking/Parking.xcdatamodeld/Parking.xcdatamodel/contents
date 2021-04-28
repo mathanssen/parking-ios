@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Parking" representedClassName="Parking" syncable="YES" codeGenerationType="class">
+        <attribute name="building" attributeType="String" minValueString="5" maxValueString="5"/>
+        <attribute name="carPlateNo" attributeType="String" minValueString="2" maxValueString="8"/>
+        <attribute name="email" attributeType="String"/>
+        <attribute name="hours" attributeType="String"/>
+        <attribute name="locationLat" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="locationLng" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="parkingDate" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="suit" attributeType="String" minValueString="2" maxValueString="5"/>
+        <relationship name="parkingToUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="userToParking" inverseEntity="User"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="carPlateNo" optional="YES" attributeType="String" minValueString="2" maxValueString="8"/>
+        <attribute name="contactNo" optional="YES" attributeType="String"/>
+        <attribute name="dateCreated" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="email" attributeType="String"/>
+        <attribute name="firstname" optional="YES" attributeType="String"/>
+        <attribute name="lastname" optional="YES" attributeType="String"/>
+        <attribute name="password" attributeType="String"/>
+        <relationship name="userToParking" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Parking" inverseName="parkingToUser" inverseEntity="Parking"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="email"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="User" positionX="181.6784057617188" positionY="-237.2188720703125" width="128" height="163"/>
+        <element name="Parking" positionX="-36" positionY="90" width="128" height="178"/>
+    </elements>
+</model>
